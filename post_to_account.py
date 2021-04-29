@@ -12,8 +12,8 @@ def postToAccount():
 	cursor = db.cursor()
 	bot = Bot() 
 	#os.chdir(path)
-	#bot.login(username = username,  
-	#		password = password)
+	bot.login(username = username,  
+			password = password)
 	print("LOGIN SUCCESS !")
 	r = cursor.execute("SELECT * FROM photos_instagram")
 	rows = cursor.fetchall()
