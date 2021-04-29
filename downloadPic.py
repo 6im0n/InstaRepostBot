@@ -32,6 +32,9 @@ class thief:
         self.cursor = self.db.cursor()
     def login(self):
         self.driver.get("https://www.instagram.com/")
+        time.sleep(7)
+        coockie_button = self.driver.find_element_by_xpath("/html/body/div[2]/div/div/div/div[2]/button[1]")
+        coockie_button.click()
         time.sleep(5)
         username_input = self.driver.find_element_by_xpath("/html/body/div[1]/section/main/article/div[2]/div[1]/div/form/div/div[1]/div/label/input")
         username_input.send_keys(username)
