@@ -15,6 +15,7 @@ def create_tables():
                 owner VARCHAR(50)
         )
         """)
+    conn = None
     try:
         # connect to the PostgreSQL server
         conn = psycopg2.connect(
