@@ -1,4 +1,5 @@
 from selenium import webdriver
+from selenium.webdriver import FirefoxOptions
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support import ui
@@ -26,14 +27,17 @@ class thief:
     def __init__(self):
         print("stating session....")
         self.path = path
-        self.driver = webdriver.Firefox()
-        #open database
+        opts = FirefoxOptions()
+        opts.add_argument("--headless")
+        self.driver = webdriver.Firefox(options=opts)
+        #open databasewebdriver.Firefox(firefox_options=opts)
         self.db = psycopg2.connect(database=databaseName,user=db_user,password=passwordDataBase,host="127.0.0.1",port="5432")
         self.cursor = self.db.cursor()
     def login(self):
         self.driver.get("https://www.instagram.com/")
         time.sleep(7)
-        coockie_button = self.driver.find_element_by_xpath("/html/body/div[2]/div/div/div/div[2]/button[1]")
+        coockie_button = self.driver.find_element_by_xpath("/html/body/div[2]/div/div/button[1]")
+        #coockie_button = self.driver.find_element_by_class_name("aOOlW  bIiDR  ")
         coockie_button.click()
         time.sleep(5)
         username_input = self.driver.find_element_by_xpath("/html/body/div[1]/section/main/article/div[2]/div[1]/div/form/div/div[1]/div/label/input")
@@ -72,8 +76,7 @@ class thief:
             headers = {
                 "user-agent": "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Mobile Safari/537.36 Edg/87.0.664.57",
                 "cookie": "sessionid="+self.driver.session_id+";"
-            }
-            print(self.driver.session_id)
+            } 
             imageScraping.scrape(headers=headers)
             print(imageScraping['display_url'])
 
@@ -133,4 +136,5 @@ class thief:
 bot = thief()
 bot.login()
 bot.downloadInstagramPics()
+self.driver.close()
 postToAccount()
