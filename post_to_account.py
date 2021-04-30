@@ -33,12 +33,11 @@ def postToAccount():
 			#Make change status on DB
 			sql_update_query = """Update photos_instagram set status = %s where id = %s"""
 			cursor.execute(sql_update_query, ("POSTED", ID))
-			connection.commit()
 			count = cursor.rowcount
 			print(count, "Record Updated successfully ")
 			#cursor.execute("SELECT * FROM photos_instagram WHERE id = "+"'"+ID+"'"+";")
 			#cursor.execute("UPDATE photos_instagram SET status = 'POSTED';")
-			os.rename(ID+".REMOVE_ME",ID+".jpeg")
+			os.rename(ID+".REMOVE_ME"+".jpeg",ID+".jpeg")
 			print("POSTED")
 		else:
 			pass
