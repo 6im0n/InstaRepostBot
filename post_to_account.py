@@ -37,7 +37,8 @@ def postToAccount():
 			print(count, "Record Updated successfully ")
 			#cursor.execute("SELECT * FROM photos_instagram WHERE id = "+"'"+ID+"'"+";")
 			#cursor.execute("UPDATE photos_instagram SET status = 'POSTED';")
-			os.rename(ID+".REMOVE_ME.jpeg",ID+".jpeg")
+			os.rename(ID+".jpeg.REMOVE_ME",ID+".jpeg")
+			os.rmdir("/root/BOT/config")
 			print("POSTED")
 		else:
 			pass
