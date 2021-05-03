@@ -26,7 +26,7 @@ from config import *
 class thief:
     def __init__(self):
         print("stating session....")
-        self.path = path
+        self.path = Picture_path
         opts = FirefoxOptions()
         opts.add_argument("--headless")
         self.driver = webdriver.Firefox(options=opts)
@@ -55,7 +55,9 @@ class thief:
     def downloadInstagramPics(self):
 
         number_photos = int(2)
-        self.driver.get("https://www.instagram.com/explore/")
+        #self.driver.get("https://www.instagram.com/explore/") #explore page
+        self.driver.get("https://www.instagram.com/explore/tags/PLACE you tage here/")
+
         for i in range(1,number_photos):
 
             #create random Id
@@ -64,7 +66,8 @@ class thief:
             ID = ''.join(random.choice(letters) for i in range(1,12))
 
             #click second post
-            post = self.driver.find_element_by_xpath("/html/body/div[1]/section/main/div/div[1]/div/div[1]/div[3]")
+           #post = self.driver.find_element_by_xpath("/html/body/div[1]/section/main/div/div[1]/div/div[1]/div[3]") #uncomment for explore tag
+            post = self.driver.find_element_by_xpath("/html/body/div[1]/section/main/article/div[1]/div/div/div[1]/div[3]") #comment for explore page
             ActionChains(self.driver).move_to_element(post).click().perform()
             time.sleep(5)
 
@@ -77,6 +80,7 @@ class thief:
                 "user-agent": "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Mobile Safari/537.36 Edg/87.0.664.57",
                 "cookie": "sessionid="+self.driver.session_id+";"
             } 
+            self.driver.close()
             imageScraping.scrape(headers=headers)
             print(imageScraping['display_url'])
 
@@ -136,5 +140,4 @@ class thief:
 bot = thief()
 bot.login()
 bot.downloadInstagramPics()
-self.driver.close()
 postToAccount()
