@@ -7,4 +7,4 @@ passwordDataBase = "xxxxxx"
 	#instagram LOGIN
 username = "xxxxxxxx"
 password = "xxxxxxxxx"
-path = "/xxxx/xxxx/xxxxx/"
+Picture_path= "/xxxx/xxxx/xxxxx/"
