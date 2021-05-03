@@ -10,9 +10,10 @@ last time tested:
 change the line 59 and place your tag here
 
 ```self.driver.get("https://www.instagram.com/explore/tags/PLACEYOURTAG/")```
-example : for the #github tag
+
 
 ```self.driver.get("https://www.instagram.com/explore/tags/github/")```
+example : for the #github tag
 
 AND add you custom parameter here config.py
 how to create database and a user in postgresql
