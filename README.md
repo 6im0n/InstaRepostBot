@@ -20,10 +20,15 @@ AND add you custom parameter here config.py
 how to create database and a user in postgresql
 
 ```su postgresql```
+
 ```psql```
+
 ```psql=#CREATE USER youruser WITH PASSWORD 'yourpass';```
+
 ```psql=#createdb dbname;```
+
 ```psql=# grant all privileges on database <dbname> to <username> ;```
+
 and launch createDataBase.py to create table and constraints (not forget to add your password, user, and database name to your config.py)
 
 database used for this purpose : postgreSQL 
