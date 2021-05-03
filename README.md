@@ -8,8 +8,10 @@ last time tested:
 
 <h2>Before start</h2>
 change the line 59 and place your tag here
+
 '''self.driver.get("https://www.instagram.com/explore/tags/PLACEYOURTAG/")'''
 example : for the #github tag
+
 '''self.driver.get("https://www.instagram.com/explore/tags/github/")'''
 
 AND add you custom parameter here config.py
