@@ -30,7 +30,6 @@ class thief:
         opts = FirefoxOptions()
         opts.add_argument("--headless")
         self.driver = webdriver.Firefox(options=opts)
-        #open databasewebdriver.Firefox(firefox_options=opts)
         self.db = psycopg2.connect(database=databaseName,user=db_user,password=passwordDataBase,host="127.0.0.1",port="5432")
         self.cursor = self.db.cursor()
     def login(self):
@@ -55,7 +54,7 @@ class thief:
     def downloadInstagramPics(self):
 
         number_photos = int(2)
-        #self.driver.get("https://www.instagram.com/explore/") #explore page
+        #self.driver.get("https://www.instagram.com/explore/") #untag for explorepage
         self.driver.get("https://www.instagram.com/explore/tags/PLACE you tage here/")
 
         for i in range(1,number_photos):
@@ -125,7 +124,7 @@ class thief:
                 print("is_video:true")
                 pass
             
-            #time.sleep(40)
+            #time.sleep(40) to update
 
             #go to next post
             #next_post = self.driver.find_element_by_xpath("/html/body/div[4]div[1]/div/div/a[2]")
